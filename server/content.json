@@ -1,0 +1,50 @@
+{
+  "heroDescription": "Tempat nongkrong asik buat mabar santai, cari temen baru, dan seru-seruan bareng tanpa drama. ",
+  "joinButtonLink": "https://discord.gg/mnxmn",
+  "gallery": [
+    {
+      "src": "./gallery/meetup1.jpg",
+      "caption": "Bukber"
+    },
+    {
+      "src": "./gallery/meetup2.jpeg",
+      "caption": "Camping"
+    },
+    {
+      "src": "/gallery-uploads/moment-1766669756528-451085430.jpeg",
+      "caption": "Camping"
+    }
+  ],
+  "videoHighlights": [
+    {
+      "url": "https://www.tiktok.com/@letsfvckngoooooo/video/7540988412615003398",
+      "caption": "ACE",
+      "type": "tiktok"
+    },
+    {
+      "url": "https://www.tiktok.com/@letsfvckngoooooo/video/7456790813289401606",
+      "caption": "ACE",
+      "type": "tiktok"
+    },
+    {
+      "url": "https://www.tiktok.com/@letsfvckngoooooo/video/7471270802764188983",
+      "caption": "Highlight Clip",
+      "type": "tiktok"
+    },
+    {
+      "url": "https://www.tiktok.com/@letsfvckngoooooo/video/7552236743248841996",
+      "caption": "Highlight Clip",
+      "type": "tiktok"
+    },
+    {
+      "url": "https://www.tiktok.com/@letsfvckngoooooo/video/7552236743248841996",
+      "caption": "Highlight Clip",
+      "type": "tiktok"
+    },
+    {
+      "url": "https://www.tiktok.com/@letsfvckngoooooo/video/7552236743248841996",
+      "caption": "Highlight Clip",
+      "type": "tiktok"
+    }
+  ]
+}

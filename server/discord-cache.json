@@ -1,0 +1,189 @@
+{
+  "data": {
+    "name": "MNXMN REBORN",
+    "totalMembers": 55,
+    "onlineMembers": 16,
+    "premiumTier": 3,
+    "premiumSubscriptionCount": 30,
+    "roles": [
+      {
+        "name": "OG",
+        "color": "#7e7b7b",
+        "id": "1426635201542623320"
+      },
+      {
+        "name": "OLDER OG",
+        "color": "#359cc2",
+        "id": "1426636572962328688"
+      },
+      {
+        "name": "YOUNG OG",
+        "color": "#aa3b3b",
+        "id": "1433010710694203485"
+      },
+      {
+        "name": "BOT",
+        "color": "#749472",
+        "id": "1426635201542623315"
+      }
+    ],
+    "members": [
+      {
+        "id": "0",
+        "username": "A14 Music Bot",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/cDhBBBi3dDFcfQ1cjv5NP_U1eD2q_hTJHBHopt229EM/7tl9AKMIOdpaU11Fk1qLI9XRKI5PjeCUjpXYUBjsIG-krYkwewwD7ST2gYOS52AghxW6oWfyf3W0TKmjybMB9VHY6JfVa4uFv6zInprdmWdQ_eTbcPMtEi4mM3d0LP8DAr2aiZ26bALupoY"
+      },
+      {
+        "id": "1",
+        "username": "A14 Music Bot 2",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/uOuLSI7EiM3XtFn_FY1fkgg2jna2eIP1Yt8kP5HiauA/m_oc96wjWocfe-zoPCqiiIsLHGL57H1HWaxObpKDIXw-f8zj3lnM_5M_SWXCFP0ojzqOCK5w_Y5eI4Crhtqnvl_pdbasKJwPUJMvE6yRuGd0EmdnogMhF6cZEFwJZwBxjPrL3kYWLbizZjo"
+      },
+      {
+        "id": "2",
+        "username": "AK",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "idle",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/1h24FW4ZmMWgOulhLigHHrKZVyJmP1HOyP-JWng-T20/UzCOxj5Ccm_nRAptjymksNujRgSGPYl9YQnctWFdbT-aHnApejE_jiTlm2NNk4EFHCfC4je2tV7m9Tv8MXN7o_VRjxY_VsXXc95XG6N9YCpgO71FKX3N-9T5i_5wZ24hE-YrZyi4Dtfw0w",
+        "game": {
+          "name": "VALORANT"
+        },
+        "deaf": false,
+        "mute": false,
+        "self_deaf": false,
+        "self_mute": false,
+        "suppress": false,
+        "channel_id": "1455158894413353146"
+      },
+      {
+        "id": "3",
+        "username": "boychill",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "idle",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/KMoXANXu8rSfKykyca0JX99GhDpg1mI5n1BxzWF3Pto/YknIC91bugWTntuZC20yPV-MPx-8adlX2AHhmXPOPKpxF73F6W-M7lbJj2Rv8t4UkZmV4OgLZ3bnWsQdCVFI3DStYYYap5UBQ61-IguE02T-7oK_aWyyw__FCUiGgRyaHNY7RF9IygpuRw"
+      },
+      {
+        "id": "4",
+        "username": "ClearChat Bot",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/3s4WYzhhO0sQH2gKHTFU_TukJxeHq0Lganj4KYyM1Vo/4CxCYXf1b6fz4DX5i3V6pcIOyzXmRMcAvVpWy0Sqmi5Su88h5msZVTSLT-XZI9FB2dyoqorWyqIMmFY_vEGiY_v0FTzNmjtqzhAHpAycFvV7hJRA6Lb3JkdXnBcwVkzsSwaG9DHBfjbKNw"
+      },
+      {
+        "id": "5",
+        "username": "Dispenser Stella",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/arESuBaIUqAuTzw3VKZiczezGb-mnh7vh5_YUzQgdCM/ockIOA-dnJhNNW1GccC7Ir36Rn34hRwhZDwfFmp2dKEWKclR05dldm4JVOAYZCs_0NSA4jrOiMs56hYqvhoRDr2H9KysrBzJRNknvlobgxbmo53SD8EVMTrY-CF_RpGkbSRClwcBy1ZGLA"
+      },
+      {
+        "id": "6",
+        "username": "Gwen",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "idle",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/X1CrqGqL-YeEOac_oC9pFQUMkWVzOyPDyd70mD_vfY8/7bY2URV_vbYhES36ocdfzbqYdctsQ1EaNbme9jZwGMOyDJTRk-XRwFxWNQ_kptDohdw-XYjYDmYpuT9mE-skr-il-hKmDslqW-pFhAoEHFg_0W2UoMoMQK4Ww26WH_Ahm6xiIGE6R4lV-fE",
+        "game": {
+          "name": "Roblox"
+        }
+      },
+      {
+        "id": "7",
+        "username": "Hanz S.Py",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "idle",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/L8nvsearUIGOd_6VfwoGhnisJOrGuC3HB9y5z5Amihs/CZgi7XfbEw5CkPvrRyY4JmOZsedUNS8PWelsAA0qL1fO_zkBZlzZQC-kP_IpxdEx-ex9mkwDFsKu9sOj6zx9wchmrdc1mFc_68rCRotF-ugXakkqHvhuVuwY9vdz6fo2PaEYmzCB_ACiLg"
+      },
+      {
+        "id": "8",
+        "username": "Koya",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/mNmITaHiM0_8PXFLCSAkXe0oeH3Di_tJELMORS3yF0U/Qej7kiwcbcMLKDOcyxeuFaYXGxGs8n3nPB2b-gBms7tCaZfsDggU_gz8QnAW0pbXnDdmuX-Pg7VWYjNIJe4x8J_nkD2RUANSHdNyiFMrbEzyj2X2kf-QoSa7ivR7aQhfyNvtyGJZP8wVEA"
+      },
+      {
+        "id": "9",
+        "username": "PatchBot",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/A23_S4sCOPb68tp_ijqvwE1O6KxQiP6iNbN6DkOLWF8/lx5GPv9Q4_rcbhhSmYD1dRoeS57DIXawnl0loqazsGUyzFVuXN9zZbqxWptb1A5aoH0wyQr9zRxoQJq3prm8ZgmBm8ckdgYBjtAeHwrCYoshsdJf-waz-ikIbM8mFLTkBLASXjBsUklRGg",
+        "game": {
+          "name": "https://PatchBot.io"
+        }
+      },
+      {
+        "id": "10",
+        "username": "Peli S.gtamabar",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "dnd",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/ePClM5oofoj54eQzv5_idmN_p_5JCbstaJlOI7bWhUU/2ylj2gaN_TWYlaSj2zCLQODGS3nPJKvC0a8UjsgOThqQz7x3E06GzXGVTixGgU3nnTluLo2TfJR0PnQHN1w3s_lLopL_zl3OzgUEQVcXsPkE3scK_Dq2YPq2JxjcpxHQkluknc01fYSFtw"
+      },
+      {
+        "id": "11",
+        "username": "Rayhan",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/EEwHBpLT2ItcbG3KUAE7ZjxKoB8xbT4if8TB6hX330o/j_NP_R1lrJnc32Aecr0kymjyQSraCzhdysXf3c_4fVmiZ_6xHIiZea8Hjq4p2sWAALZIvAM3R5-JkPNogiI",
+        "deaf": false,
+        "mute": false,
+        "self_deaf": false,
+        "self_mute": false,
+        "suppress": false,
+        "channel_id": "1455158894413353146"
+      },
+      {
+        "id": "12",
+        "username": "SAKATA S.Png",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "dnd",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/Z9YRh49AhA8fbGTuint-3rq2X8FytFeS-7SrT3xvm2Y/wmLJcCXZaGE1hZBfLXwXVVgz26bCWkrwPtEkdXsqMhUZntBLKzi9N8E09D4Kcd7yWi_3zdxZdz04L0euHdbr_jBKkdS6cCKPXigiPukKbuNxWAGBJPzF6u6T2UGnUY78FVj-h0csXrem2Q",
+        "deaf": false,
+        "mute": false,
+        "self_deaf": false,
+        "self_mute": true,
+        "suppress": false,
+        "channel_id": "1455158894413353146"
+      },
+      {
+        "id": "13",
+        "username": "Sapphire",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/klUZYVBVbIhbAMM6ida_5sEtAfo_kxSLwWqk3NZ2e9Y/Mcxpr7Finyt1hLF8nl_WjDhZmadQwKXdpsC8I_YaY0zU1NU2UPZdWUNhZfKTYhXmFzRU8Ijx7gwh1zlRNPWKvVh71et9dKtYPdjufWL4a5n8154ZKDalLUJw89c-EQ3CK2FKSFipVcWbrg"
+      },
+      {
+        "id": "14",
+        "username": "the Prince",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/_QfFakA61BE4RN0iwcFrRJZsim0I8y4dzfXgwss-WTw/2qMo1M4daDtV2rJ9ZRcoOrNdvO85iPB52Ea9HGja4ut73jfYZ_TAMk1_Oncat3UyyzqYaGrZ1GWulMtRjusOrQpHo2GwgvTFojc0Pxg0DwheGkSRyiZCMJ6cHTpVy4RIHvhz4nygZW_FLg"
+      },
+      {
+        "id": "15",
+        "username": "VoiceMaster",
+        "discriminator": "0000",
+        "avatar": null,
+        "status": "online",
+        "avatar_url": "https://cdn.discordapp.com/widget-avatars/1Nfp5pkqT4JLvFXFRIUfZhCSwiE9dEHxDce_2UT1oDo/HWMzEw4FtCfFld76kCs7FUdvfEnDIgNDVxieY-09AnjXDdN4-pF569Mh-EOSwvwVV38cfmEewVx3Tf8XkDsLoJ6Z-7GX3DYlzH7wN1niwRia8FoEYoegZfG5bDGhkD6YnUvntgsnsSet8g"
+      }
+    ]
+  },
+  "lastFetch": 1767011834745
+}

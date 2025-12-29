@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Join MNXMN - The Ultimate Indonesian Discord Community">
+    <title>MNXMN | Community Discord Indonesia</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Preloader -->
+      <div id="preloader">
+        <div class="loader-content">
+          <h1 class="hacker-text" data-value="MNXMN">MNXMN</h1>
+          <div class="loader-bar"></div>
+        </div>
+      </div>
+
+      <div class="header-controls">
+         <div id="user-profile" class="user-profile" style="display: none;">
+             <img id="user-avatar" src="" alt="User" />
+             <div class="user-info-col">
+                 <span id="user-name">User</span>
+                 <span id="user-badge" class="user-badge"></span>
+             </div>
+             <button id="logout-btn" title="Logout">x</button>
+         </div>
+         <a href="/api/auth/login" id="login-btn" class="btn-login">Login Discord</a>
+         
+         <button id="theme-toggle" aria-label="Toggle Dark Mode">
+           ☀️
+         </button>
+      </div>
+
+
+      <canvas id="particle-canvas"></canvas>
+      <div class="cursor-dot" data-cursor-dot></div>
+      <div class="cursor-outline" data-cursor-outline></div>
+      <div class="cursor-glow" data-cursor-glow></div>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <!-- hero-bg removed in favor of canvas -->
+        <div class="container hero-content">
+          <div class="hero-logo-wrapper">
+            <img src="/logo.png" alt="MNXMN" class="hero-logo" />
+          </div>
+          <p class="hero-subtitle">Community Discord <span class="text-gradient" id="typing-text">Indonesia</span><span class="cursor-blink">|</span></p>
+          <p class="hero-desc" id="hero-description">Tempat nongkrong asik buat mabar santai, cari temen baru, dan seru-seruan bareng tanpa drama.</p>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features">
+        <div class="container">
+          <div class="feature-grid">
+            <div class="feature-card scroll-reveal">
+              <div class="icon">🎮</div>
+              <h3>Mabar Everyday</h3>
+              <p>Cari teman mabar buat game favoritmu, mulai dari Mobile Legends, Valorant, sampai game random yang seru.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+              <div class="icon">🤝</div>
+              <h3>Friendly Vibes</h3>
+              <p>Komunitas yang ramah, anti-toxic, dan solid. Ngobrol santai tanpa drama.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Discord Section -->
+      <section class="discord-promo">
+        <div class="container promo-content">
+          <div class="promo-card scroll-reveal">
+            <div class="discord-icon-large">
+              <img src="https://cdn.discordapp.com/icons/1426635201542623314/a_1e47cee2ee93e49c5ce50197aaf911df.gif" alt="MNXMN Server Icon" />
+            </div>
+            <div class="promo-text">
+            <div class="server-header">
+              <h3 id="discord-server-name" class="glitch" data-text="MNXMN REBORN">MNXMN REBORN</h3>
+              <div class="server-tag-badge" title="Server Tag">
+                <span class="tag-icon">⚡</span>MNMN
+              </div>
+            </div>
+              
+              <div class="server-stats-grid">
+                <div class="stat-item">
+                  <span class="stat-value" id="discord-online-count">~</span>
+                  <span class="stat-label"><span class="status-dot"></span> Online</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value" id="discord-total-count">?</span>
+                  <span class="stat-label">Total Members</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value" id="discord-boosts">0</span>
+                  <span class="stat-label">Boosts (Lvl <span id="discord-boost-level">0</span>)</span>
+                </div>
+              </div>
+
+
+
+              <div id="discord-roles" class="discord-roles">
+                <!-- Roles will be injected here -->
+              </div>
+
+              <div id="discord-members" class="discord-members"></div>
+            </div>
+            <a href="https://discord.gg/mnxmn" target="_blank" class="btn-primary" style="margin-left: auto;">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037 13.06 13.06 0 0 0-1.063 2.192 14.857 14.857 0 0 0-5.225 0 13.025 13.025 0 0 0-1.069-2.2.072.072 0 0 0-.079-.033 19.544 19.544 0 0 0-4.881 1.515.061.061 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.118.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.086 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.086 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z"/></svg>
+              Join Discord
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Highlights Section -->
+      <section class="highlights" id="highlights-section" style="display: none;"> <!-- Hidden safely until loaded -->
+        <div class="container">
+          <h2 class="section-title scroll-reveal">Community Highlights</h2>
+          <div class="highlights-grid" id="highlights-grid">
+            <!-- JS will inject video cards here -->
+          </div>
+          <div id="highlights-load-more" class="load-more-container"></div>
+        </div>
+      </section>
+
+      <!-- Upcoming Events Section -->
+      <section class="events" id="events-section">
+        <div class="container">
+          <h2 class="section-title scroll-reveal">Upcoming Events</h2>
+          <div class="events-grid" id="events-grid">
+             <!-- JS will inject events here -->
+             <p style="text-align: center; color: #aaa;">Loading events...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <!-- Holographic Member Card -->
+      <section class="holo-section" style="display: block !important;">
+        <div class="container">
+          <h2 class="section-title">Official Member Card</h2>
+          <div class="holo-container">
+             
+             <div class="holo-card" id="holo-card">
+                <div class="holo-content">
+                    <div class="holo-header">
+                        <img src="/logo.png" class="holo-logo" alt="MNXMN" onerror="this.src='https://placehold.co/50x50/purple/white?text=M'"/>
+                        <span class="holo-batch">BATCH 2025</span>
+                    </div>
+
+                    <div class="holo-body">
+                        <div class="holo-avatar-ring">
+                            <img id="holo-avatar-img" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+                        </div>
+                        <h3 id="holo-username">GUEST USER</h3>
+                        <p id="holo-role" class="holo-role">NOT VERIFIED</p>
+                    </div>
+                    <div class="holo-footer">
+                        <div class="holo-code">ID: <span id="holo-id">0000-0000</span></div>
+                        <div class="holo-chip"></div>
+                    </div>
+                </div>
+                <!-- Layers for Effect -->
+                <div class="holo-shimmer"></div>
+                <div class="holo-glare"></div>
+
+                <!-- Locked Overlay -->
+                <div class="holo-lock-overlay">
+                    <a href="/api/auth/login" id="holo-lock-action" class="holo-lock-btn">LOGIN TO CREATE</a>
+                </div>
+             </div>
+
+             <div class="holo-actions">
+                 <p class="holo-instruction">Hover to inspect your card</p>
+                 
+                 <!-- Color Picker -->
+                 <div class="holo-colors">
+                     <div class="holo-swatch active" data-color="purple" style="background: #8b5cf6;"></div>
+                     <div class="holo-swatch" data-color="green" style="background: #00ff88;"></div>
+                     <div class="holo-swatch" data-color="gold" style="background: #ffd700;"></div>
+                     <div class="holo-swatch" data-color="red" style="background: #ff0055;"></div>
+                     <div class="holo-swatch" data-color="blue" style="background: #00ccff;"></div>
+                 </div>
+
+                 <button id="btn-download-holo" class="btn-secondary small">Download Card</button>
+             </div>
+          </div>
+        </div>
+      </section>
+      <section class="gallery">
+        <div class="container">
+          <h2 class="section-title">Moments</h2>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="/gallery/meetup1.jpg" alt="Meetup Moment 1" loading="lazy" />
+              <div class="overlay"><span>Bukber</span></div>
+            </div>
+            <div class="gallery-item">
+              <img src="/gallery/meetup2.jpeg" alt="Meetup Moment 2" loading="lazy" />
+              <div class="overlay"><span>Camping</span></div>
+            </div>
+            <div class="gallery-item scroll-reveal">
+              <img src="/gallery/meetup3.jpeg" alt="Meetup Moment 3" loading="lazy" />
+              <div class="overlay"><span>Camping</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="scroll-reveal">
+        <div class="container">
+          <p>&copy; 2025 MNXMN Community. All rights reserved.</p>
+        </div>
+      </footer>
+
+      <!-- Back to Top Button -->
+      <button id="back-to-top" aria-label="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+      </button>
+    </div>
+
+
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

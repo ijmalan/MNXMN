@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - MNXMN</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding-top: 80px; min-height: 100vh; }
+    .dashboard-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .panel {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .form-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: white;
+      font-family: inherit;
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .logout-btn {
+      background: transparent;
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover { background: #ef4444; color: white; }
+    .status-bar {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #4ade80;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      transform: translateY(200%);
+      transition: transform 0.3s;
+    }
+    .status-bar.show { transform: translateY(0); }
+    
+    .gallery-list-edit {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .gallery-thumb {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .btn-delete {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(239, 68, 68, 0.9);
+      color: white;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+    
+    .caption-input {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      border: none;
+      color: white;
+      padding: 5px;
+      font-size: 12px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .caption-input:focus { outline: none; background: rgba(0,0,0,0.9); }
+    /* Responsive Dashboard */
+    @media (max-width: 768px) {
+      .dashboard-container { padding: 1rem; margin-top: 20px; }
+      .admin-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .logout-btn { width: 100%; text-align: center; margin-top: 1rem; }
+      .panel { padding: 1.25rem; }
+      
+      .video-input-group {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .video-input-group > div {
+        width: 100% !important;
+        margin-bottom: 12px;
+      }
+      .video-input-group button {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-top: 8px; /* Added spacing */
+      }
+      .btn-primary, .btn-secondary {
+         width: 100%; /* Make buttons full width on mobile for easier tapping */
+         justify-content: center;
+      }
+      .footer-actions {
+        text-align: center !important; /* Center footer links */
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .footer-actions a { margin-right: 0 !important; margin-bottom: 1rem; display: block; }
+      
+      /* Gallery grid already auto-fills, but maybe smaller gap */
+      .gallery-list-edit { gap: 0.5rem; }
+    }
+    
+    /* Video Item Styles */
+    .video-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.05);
+        padding: 0.8rem;
+        border-radius: 8px;
+    }
+    .video-info { display: flex; align-items: center; gap: 10px; overflow: hidden; }
+    .video-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .video-text { overflow: hidden; }
+    .video-text .video-caption { font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .video-text .video-url { font-size: 0.8rem; color: #aaa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .video-item .btn-delete { position: static; margin-left: 10px; flex-shrink: 0; }
+    
+    .footer-actions { margin-top: 2rem; text-align: right; }
+  </style>
+</head>
+<body>
+  
+  <div class="dashboard-container">
+    <div class="admin-header">
+      <div>
+        <h1 class="gradient-text">Content Manager</h1>
+        <p style="color: #94a3b8;">Edit your landing page content in real-time.</p>
+      </div>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+
+    <!-- Edit Form -->
+    <div class="panel">
+      <form id="content-form">
+        <div class="form-grid">
+          
+          <!-- Header & Subtitle are static (Logo) now -->
+          
+          <div class="form-group">
+            <label>Hero Description</label>
+            <textarea id="heroDescription" name="heroDescription"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Join Button URL</label>
+            <input type="text" id="joinButtonLink" name="joinButtonLink">
+          </div>
+
+          <!-- Gallery Manager -->
+          <div class="form-group" style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <label style="font-size: 1.2rem; color: #fff;">Gallery Manager</label>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Upload photos for the "Moments" section. Use landscape photos for best results.</p>
+            
+            <div id="gallery-list" class="gallery-list-edit">
+              <!-- JS will populate this -->
+            </div>
+
+            <div style="margin-top: 1rem;">
+               <input type="file" id="galleryUpload" accept="image/*" style="display: none;">
+               <button type="button" class="btn-secondary" onclick="document.getElementById('galleryUpload').click()">+ Upload New Photo</button>
+               <span id="upload-status" style="margin-left: 10px; color: #aaa;"></span>
+            </div>
+          </div>
+
+          <!-- Video Highlights Manager -->
+          <div class="form-group" style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <label style="font-size: 1.2rem; color: #fff;">Video Highlights Manager</label>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Add TikTok or YouTube links to show in the "Highlights" section.</p>
+            
+            <div id="video-list" class="form-grid" style="margin-bottom: 1rem; gap: 1rem;">
+              <!-- JS will populate this -->
+            </div>
+
+            <div class="video-input-group" style="display: flex; gap: 10px; align-items: flex-end; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
+               <div style="flex: 2;">
+                 <label style="font-size: 0.8rem;">Video Link (TikTok/YouTube)</label>
+                 <input type="text" id="newVideoUrl" placeholder="https://tiktok.com/... or https://youtube.com/...">
+               </div>
+               <div style="flex: 1;">
+                 <label style="font-size: 0.8rem;">Caption</label>
+                 <input type="text" id="newVideoCaption" placeholder="Title/Caption">
+               </div>
+               <button type="button" class="btn-secondary" style="background: var(--color-primary); border-color: transparent;" onclick="addVideo()">+ Add Video</button>
+            </div>
+          </div>
+
+          <!-- Events Manager -->
+          <div class="form-group" style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <label style="font-size: 1.2rem; color: #fff;">Upcoming Events Manager</label>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Manage upcoming community events.</p>
+            
+            <div id="events-list" class="form-grid" style="margin-bottom: 1rem; gap: 1rem;">
+              <!-- JS will populate this -->
+            </div>
+
+            <div class="video-input-group" style="display: flex; gap: 10px; align-items: flex-end; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
+               <div style="flex: 2;">
+                 <label style="font-size: 0.8rem;">Event Name</label>
+                 <input type="text" id="newEventName" placeholder="e.g. Bukber 2026">
+               </div>
+               <div style="flex: 1;">
+                 <label style="font-size: 0.8rem;">Date</label>
+                 <input type="date" id="newEventDate">
+               </div>
+               <div style="flex: 1;">
+                 <label style="font-size: 0.8rem;">Time</label>
+                 <input type="time" id="newEventTime">
+               </div>
+               <button type="button" class="btn-secondary" style="background: var(--color-primary); border-color: transparent;" onclick="addEvent()">+ Add Event</button>
+            </div>
+          </div>
+
+        </div>
+
+        </div>
+        
+        <div class="footer-actions">
+          <a href="/" target="_blank" style="margin-right: 1rem; color: #94a3b8; text-decoration: none;">View Site ↗</a>
+          <button type="submit" class="btn-primary">Save Changes 💾</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="status-bar" class="status-bar">Changes Saved Successfully! ✅</div>
+
+  <!-- Flatpickr (Calendar UI) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    // Init Flatpickr
+    document.addEventListener('DOMContentLoaded', () => {
+        flatpickr("#newEventDate", {
+            dateFormat: "Y-m-d",
+            theme: "dark",
+            animate: true,
+            minDate: "today"
+        });
+        flatpickr("#newEventTime", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true,
+            theme: "dark"
+        });
+    });
+
+    const API_URL = '/api/content';
+    const token = localStorage.getItem('mnxmn_admin_token');
+
+    // Auth Check
+    if (!token) {
+      window.location.href = '/login.html';
+    }
+
+    // State
+    let currentGallery = [];
+    let currentVideos = [];
+
+    // Load Initial Data
+    async function loadData() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        
+        // Populate inputs
+        if(data.heroDescription) document.getElementById('heroDescription').value = data.heroDescription;
+        if(data.joinButtonLink) document.getElementById('joinButtonLink').value = data.joinButtonLink;
+        // Footer Text Removed
+
+        // Init Gallery & Videos
+        currentGallery = data.gallery || []; 
+        currentVideos = data.videoHighlights || [];
+        renderGallery();
+        renderVideos();
+
+      } catch (err) {
+        console.error('Failed to load content', err);
+      }
+    }
+
+    function renderGallery() {
+      const container = document.getElementById('gallery-list');
+      if (container) {
+          container.innerHTML = '';
+          currentGallery.forEach((img, index) => {
+            const div = document.createElement('div');
+            div.className = 'gallery-thumb';
+            div.innerHTML = `
+              <img src="${img.src}" alt="Gallery ${index}">
+              <input type="text" class="caption-input" value="${img.caption || ''}" placeholder="Caption..." onchange="updateCaption(${index}, this.value)">
+              <button type="button" class="btn-delete" onclick="removeImage(${index})">×</button>
+            `;
+            container.appendChild(div);
+          });
+      }
+    }
+
+    window.updateCaption = (index, val) => {
+      if(currentGallery[index]) {
+        currentGallery[index].caption = val;
+      }
+    }
+
+    // Helper to save just the gallery data (Auto-save)
+    async function saveGalleryData() {
+        const formData = new FormData(document.getElementById('content-form'));
+        const data = Object.fromEntries(formData.entries());
+        data.gallery = currentGallery;
+        data.videoHighlights = currentVideos; // Also save videos if any
+
+        try {
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            });
+            showStatus('Gallery Saved! ✅');
+        } catch (e) {
+            console.error('Auto-save failed', e);
+        }
+    }
+
+    window.removeImage = (index) => {
+      currentGallery.splice(index, 1);
+      renderGallery();
+      saveGalleryData(); // Auto-save
+    }
+
+    // --- Video Manager Logic ---
+    
+
+    function renderVideos() {
+      const container = document.getElementById('video-list');
+      if (container) {
+          container.innerHTML = '';
+          currentVideos.forEach((vid, index) => {
+            const div = document.createElement('div');
+            div.className = 'video-item';
+            
+            let icon = '🔗';
+            if(vid.url.includes('tiktok')) icon = '🎵';
+            if(vid.url.includes('youtu')) icon = '📺';
+
+            div.innerHTML = `
+              <div class="video-info">
+                <span class="video-icon">${icon}</span>
+                <div class="video-text">
+                  <div class="video-caption">${vid.caption || 'No Caption'}</div>
+                  <div class="video-url">${vid.url}</div>
+                </div>
+              </div>
+              <button type="button" class="btn-delete" onclick="removeVideo(${index})">×</button>
+            `;
+            container.appendChild(div);
+          });
+      }
+    }
+
+    window.addVideo = () => {
+      const urlInput = document.getElementById('newVideoUrl');
+      const captionInput = document.getElementById('newVideoCaption');
+      const url = urlInput.value.trim();
+      
+      if(!url) return alert('Please enter a URL');
+      
+      let type = 'other';
+      if(url.includes('tiktok.com')) type = 'tiktok';
+      if(url.includes('youtube.com') || url.includes('youtu.be')) type = 'youtube';
+
+      currentVideos.push({
+        url: url,
+        caption: captionInput.value.trim() || 'Highlight Clip',
+        type: type
+      });
+
+      urlInput.value = '';
+      captionInput.value = '';
+      renderVideos();
+      // We rely on the main "Save Changes" or we can auto-save here too.
+      // Let's rely on main save for now, or just mimic auto-save if desired.
+    }
+
+    window.removeVideo = (index) => {
+      currentVideos.splice(index, 1);
+      renderVideos();
+    }
+
+
+    // --- Events Manager Logic ---
+    async function loadEvents() {
+        try {
+            const res = await fetch('/api/events');
+            const events = await res.json();
+            renderEvents(events);
+        } catch(e) {
+            console.error('Failed to load events', e);
+        }
+    }
+
+    function renderEvents(events) {
+        const container = document.getElementById('events-list');
+        if(!container) return;
+        container.innerHTML = '';
+        
+        if(events.length === 0) {
+            container.innerHTML = '<p style="color: #666; font-style: italic;">No upcoming events.</p>';
+            return;
+        }
+
+        events.forEach(event => {
+            const div = document.createElement('div');
+            div.className = 'video-item'; // Reuse styles
+            div.innerHTML = `
+                <div class="video-info">
+                    <span class="video-icon">📅</span>
+                    <div class="video-text">
+                        <div class="video-caption">${event.name}</div>
+                        <div class="video-url">${event.date} at ${event.time}</div>
+                    </div>
+                </div>
+                <button type="button" class="btn-delete" onclick="deleteEvent('${event.id}')">×</button>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    window.addEvent = async () => {
+        const nameIn = document.getElementById('newEventName');
+        const dateIn = document.getElementById('newEventDate');
+        const timeIn = document.getElementById('newEventTime');
+        
+        const name = nameIn.value.trim();
+        const date = dateIn.value;
+        const time = timeIn.value;
+        
+        if(!name || !date) return alert('Please enter Event Name and Date');
+        
+        const newEvent = { name, date, time };
+        
+        try {
+            const res = await fetch('/api/events', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(newEvent)
+            });
+            
+            if(res.ok) {
+                showStatus('Event Added! ✅');
+                nameIn.value = '';
+                dateIn.value = '';
+                timeIn.value = '';
+                loadEvents();
+            } else {
+                alert('Failed to add event');
+            }
+        } catch(e) {
+            console.error(e);
+            alert('Error adding event');
+        }
+    }
+
+    window.deleteEvent = async (id) => {
+        if(!confirm('Delete this event?')) return;
+        
+        try {
+            const res = await fetch(`/api/events/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            
+            if(res.ok) {
+                showStatus('Event Deleted! 🗑️');
+                loadEvents();
+            } else {
+                alert('Failed to delete event');
+            }
+        } catch(e) {
+            console.error(e);
+        }
+    }
+    
+    // Add loadEvents to init
+    const originalLoadData = loadData; // Hook into existing loadData if needed, 
+    // but better just call loadEvents() at the end or in init
+
+
+
+    // Handle Upload
+    const uploadInput = document.getElementById('galleryUpload');
+    if(uploadInput) {
+        uploadInput.addEventListener('change', async (e) => {
+          const file = e.target.files[0];
+          if(!file) return;
+
+          const formData = new FormData();
+          formData.append('image', file);
+
+          const statusEl = document.getElementById('upload-status');
+          statusEl.innerText = 'Uploading...';
+
+          try {
+            const res = await fetch('/api/upload', {
+              method: 'POST',
+              headers: { 'Authorization': `Bearer ${token}` },
+              body: formData
+            });
+            const data = await res.json();
+
+            if(data.success) {
+              statusEl.innerText = 'Done!';
+              // Add to gallery with default caption
+              currentGallery.push({ src: data.filePath, caption: 'New Moment' });
+              renderGallery();
+              saveGalleryData(); // Auto-save
+            } else {
+               statusEl.innerText = 'Failed: ' + (data.error || 'Unknown');
+            }
+          } catch(err) {
+            statusEl.innerText = 'Error Uploading';
+            console.error(err);
+          }
+        });
+    }
+
+    // Save Data
+    document.getElementById('content-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Merge Gallery Data
+      data.gallery = currentGallery;
+      data.videoHighlights = currentVideos;
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          showStatus('Changes Saved Successfully! ✅');
+        } else {
+          showStatus('Failed to save ❌');
+        }
+      } catch (err) {
+        showStatus('Error connecting to server ⚠️');
+      }
+    });
+
+    function showStatus(msg) {
+      const bar = document.getElementById('status-bar');
+      bar.textContent = msg;
+      bar.classList.add('show');
+      setTimeout(() => bar.classList.remove('show'), 3000);
+    }
+
+    function logout() {
+      localStorage.removeItem('mnxmn_admin_token');
+      window.location.href = '/login.html';
+    }
+
+    // Init
+    loadData();
+    loadEvents();
+  </script>
+</body>
+</html>
